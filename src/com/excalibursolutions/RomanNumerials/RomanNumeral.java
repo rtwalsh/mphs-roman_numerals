@@ -94,12 +94,34 @@ public class RomanNumeral {
 			}
 		}
 		
-		for (int i = 0; i < tensDigit; ++i) {
-			output += "X";
+		if (tensDigit == 9) {
+			output += "XC";
+		} else if (tensDigit == 4) {
+			output += "XL";
+		} else if (tensDigit > 4) {
+			output += "L";
+			for (int i = 0; i < tensDigit - 5; ++i) {
+				output += "X";
+			}
+		} else {
+			for (int i = 0; i < tensDigit; ++i) {
+				output += "X";
+			}
 		}
 		
-		for (int i = 0; i < onesDigit; ++i) {
-			output += "I";
+		if (onesDigit == 9) {
+			output += "IX";
+		} else if (onesDigit == 4) {
+			output += "IV";
+		} else if (onesDigit > 4) {
+			output += "V";
+			for (int i = 0; i < onesDigit - 5; ++i) {
+				output += "I";
+			}
+		} else {
+			for (int i = 0; i < onesDigit; ++i) {
+				output += "I";
+			}
 		}
 		
 		return output;
