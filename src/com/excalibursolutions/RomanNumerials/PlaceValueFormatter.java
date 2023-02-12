@@ -27,18 +27,20 @@ public class PlaceValueFormatter {
 	}
 	
 	public String toString() {
+		int theDigit = digit;	// create a copy so we can manipulate its value without affecting the original object
 		String output = "";
-		if (digit == 9) {
+		
+		if (theDigit == 9) {
 			output += onesSymbol + tensSymbol;
-		} else if (digit == 4) {
+		} else if (theDigit == 4) {
 			output += onesSymbol + fiveSymbol;
-		} else if (digit > 4) {
-			output += fiveSymbol;
-			for (int i = 0; i < digit - 5; ++i) {
-				output += onesSymbol;
-			}
 		} else {
-			for (int i = 0; i < digit; ++i) {
+			if (theDigit > 4) {
+				output += fiveSymbol;
+				theDigit -= 5;
+			}
+			
+			for (int i = 0; i < theDigit; ++i) {
 				output += onesSymbol;
 			}
 		}
