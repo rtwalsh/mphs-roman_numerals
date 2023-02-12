@@ -32,7 +32,7 @@ public class RomanNumeral {
 		
 		try {
 			RomanNumeral romanNumeral = new RomanNumeral(Integer.parseInt(input));
-			
+			System.out.println(input + " in Roman numerals is " + romanNumeral.toString());
 		} catch (NumberFormatException e) {
 			System.out.println("Error: Unable to convert '" + input + "' to Roman numerals.");
 		} catch (Exception e) {
@@ -70,5 +70,27 @@ public class RomanNumeral {
 		} else {
 			throw new Exception("Number to convert must be less than 4000");
 		}
+	}
+	
+	public String toString() {
+		String output = "";
+		
+		for (int i = 0; i < thousandsDigit; ++i) {
+			output += "M";
+		}
+		
+		for (int i = 0; i < hundredsDigit; ++i) {
+			output += "C";
+		}
+		
+		for (int i = 0; i < tensDigit; ++i) {
+			output += "X";
+		}
+		
+		for (int i = 0; i < onesDigit; ++i) {
+			output += "I";
+		}
+		
+		return output;
 	}
 }
