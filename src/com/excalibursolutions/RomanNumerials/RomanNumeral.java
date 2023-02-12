@@ -79,8 +79,19 @@ public class RomanNumeral {
 			output += "M";
 		}
 		
-		for (int i = 0; i < hundredsDigit; ++i) {
-			output += "C";
+		if (hundredsDigit == 9) {
+			output += "CM";
+		} else if (hundredsDigit == 4) {
+			output += "CD";
+		} else if (hundredsDigit > 4) {
+			output += "D";
+			for (int i = 0; i < hundredsDigit - 5; ++i) {
+				output += "C";
+			}
+		} else {
+			for (int i = 0; i < hundredsDigit; ++i) {
+				output += "C";
+			}
 		}
 		
 		for (int i = 0; i < tensDigit; ++i) {
