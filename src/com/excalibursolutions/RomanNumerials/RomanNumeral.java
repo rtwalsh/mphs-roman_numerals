@@ -20,6 +20,14 @@ import java.util.Scanner;
 
 public class RomanNumeral {
 
+	public static String THOUSANDS_SYMBOL = "M";
+	public static String FIVE_HUNDRED_SYMBOL = "D";
+	public static String HUNDREDS_SYMBOL = "C";
+	public static String FIFTY_SYMBOL = "L";
+	public static String TENS_SYMBOL = "X";
+	public static String FIVE_SYMBOL = "V";
+	public static String ONES_SYMBOL = "I";
+	
 	public static void main(String[] args) {
 		String input;
 		if (args.length > 0) {
@@ -76,54 +84,12 @@ public class RomanNumeral {
 		String output = "";
 		
 		for (int i = 0; i < thousandsDigit; ++i) {
-			output += "M";
+			output += THOUSANDS_SYMBOL;
 		}
 		
-		if (hundredsDigit == 9) {
-			output += "CM";
-		} else if (hundredsDigit == 4) {
-			output += "CD";
-		} else if (hundredsDigit > 4) {
-			output += "D";
-			for (int i = 0; i < hundredsDigit - 5; ++i) {
-				output += "C";
-			}
-		} else {
-			for (int i = 0; i < hundredsDigit; ++i) {
-				output += "C";
-			}
-		}
-		
-		if (tensDigit == 9) {
-			output += "XC";
-		} else if (tensDigit == 4) {
-			output += "XL";
-		} else if (tensDigit > 4) {
-			output += "L";
-			for (int i = 0; i < tensDigit - 5; ++i) {
-				output += "X";
-			}
-		} else {
-			for (int i = 0; i < tensDigit; ++i) {
-				output += "X";
-			}
-		}
-		
-		if (onesDigit == 9) {
-			output += "IX";
-		} else if (onesDigit == 4) {
-			output += "IV";
-		} else if (onesDigit > 4) {
-			output += "V";
-			for (int i = 0; i < onesDigit - 5; ++i) {
-				output += "I";
-			}
-		} else {
-			for (int i = 0; i < onesDigit; ++i) {
-				output += "I";
-			}
-		}
-		
+		output += new PlaceValueFormatter(THOUSANDS_SYMBOL, FIVE_HUNDRED_SYMBOL, HUNDREDS_SYMBOL, hundredsDigit).toString();
+		output += new PlaceValueFormatter(HUNDREDS_SYMBOL, FIFTY_SYMBOL, TENS_SYMBOL, tensDigit).toString();
+		output += new PlaceValueFormatter(TENS_SYMBOL, FIVE_SYMBOL, ONES_SYMBOL, onesDigit).toString();
 		return output;
 	}
 }
