@@ -40,6 +40,7 @@ public class RomanNumeral {
 			System.out.println("Please enter a number to convert to Roman numerals: ");
 			Scanner scanner = new Scanner(System.in);
 			input = scanner.next();
+			scanner.close();
 		}
 		
 		try {
