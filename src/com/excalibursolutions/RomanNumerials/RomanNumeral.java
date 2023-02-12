@@ -28,6 +28,10 @@ public class RomanNumeral {
 	public static String FIVE_SYMBOL = "V";
 	public static String ONES_SYMBOL = "I";
 	
+	public static PlaceValueFormatter hundredsFormatter = new PlaceValueFormatter(THOUSANDS_SYMBOL, FIVE_HUNDRED_SYMBOL, HUNDREDS_SYMBOL);
+	public static PlaceValueFormatter tensFormatter = new PlaceValueFormatter(HUNDREDS_SYMBOL, FIFTY_SYMBOL, TENS_SYMBOL);
+	public static PlaceValueFormatter onesFormatter = new PlaceValueFormatter(TENS_SYMBOL, FIVE_SYMBOL, ONES_SYMBOL);
+
 	public static void main(String[] args) {
 		String input;
 		if (args.length > 0) {
@@ -87,9 +91,9 @@ public class RomanNumeral {
 			output += THOUSANDS_SYMBOL;
 		}
 		
-		output += new PlaceValueFormatter(THOUSANDS_SYMBOL, FIVE_HUNDRED_SYMBOL, HUNDREDS_SYMBOL, hundredsDigit).toString();
-		output += new PlaceValueFormatter(HUNDREDS_SYMBOL, FIFTY_SYMBOL, TENS_SYMBOL, tensDigit).toString();
-		output += new PlaceValueFormatter(TENS_SYMBOL, FIVE_SYMBOL, ONES_SYMBOL, onesDigit).toString();
+		output += hundredsFormatter.format(hundredsDigit);
+		output += tensFormatter.format(tensDigit);
+		output += onesFormatter.format(onesDigit);
 		return output;
 	}
 }

@@ -17,30 +17,27 @@ public class PlaceValueFormatter {
 	private String tensSymbol;
 	private String fiveSymbol;
 	private String onesSymbol;
-	private int digit;
 	
-	public PlaceValueFormatter(String theTensSymbol, String theFiveSymbol, String theOnesSymbol, int theDigit) {
+	public PlaceValueFormatter(String theTensSymbol, String theFiveSymbol, String theOnesSymbol) {
 		tensSymbol = theTensSymbol;
 		fiveSymbol = theFiveSymbol;
 		onesSymbol = theOnesSymbol;
-		digit = theDigit;
 	}
 	
-	public String toString() {
-		int theDigit = digit;	// create a copy so we can manipulate its value without affecting the original object
+	public String format(int digit) {
 		String output = "";
 		
-		if (theDigit == 9) {
+		if (digit == 9) {
 			output += onesSymbol + tensSymbol;
-		} else if (theDigit == 4) {
+		} else if (digit == 4) {
 			output += onesSymbol + fiveSymbol;
 		} else {
-			if (theDigit > 4) {
+			if (digit > 4) {
 				output += fiveSymbol;
-				theDigit -= 5;
+				digit -= 5;
 			}
 			
-			for (int i = 0; i < theDigit; ++i) {
+			for (int i = 0; i < digit; ++i) {
 				output += onesSymbol;
 			}
 		}
